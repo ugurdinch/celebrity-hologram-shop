@@ -1,0 +1,16 @@
+<div class="app-body" (touchstart)="swipe($event, 'start')" (touchend)="swipe($event, 'end')">
+
+	<app-side-menu class="side-menu" [@sideMenuSlide]="appService.isMenuOpen ? 'slideRight' : 'slideLeft'" ></app-side-menu>
+
+	<div class="sliding-body" [@bodySlide]="appService.isMenuOpen ? 'slideRight' : 'slideLeft'" >
+
+		<div class="mb-5">
+			<app-header></app-header>
+		</div>
+	
+		<div class="main">
+			<router-outlet></router-outlet>
+		</div>
+	</div>
+
+</div>

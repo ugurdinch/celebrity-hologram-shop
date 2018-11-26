@@ -1,0 +1,45 @@
+@import '~bootstrap/scss/functions';
+
+$theme-colors: (
+  "primary": #2BBDC9,
+  "secondary": #FFA039
+);
+
+// $link-color: #007bff;
+$link-color: #2BBDC9;
+
+@import "~bootstrap/scss/bootstrap";
+
+// ng-bootstrap modal toggle animation
+.modal-holder{
+	animation-name: example;
+	animation-duration: 0.3s;
+}
+@keyframes example {
+	0%   {transform: scale(0.5)}
+	100% {transform: scale(1)}
+}
+
+// adding btn-default back to bootstrap 4
+.btn-default {
+	color: #333;
+	background-color: #fff;
+	border-color: #ccc;
+
+	&.active,&:hover,&:active,&:focus,&:target,&:active:focus {
+		&:not([disabled]) {
+			color: #333;
+			background-color: #e6e6e6;
+			border-color: #adadad;
+		}
+	}
+}
+
+/* form validation colors */
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #2BBDC9 !important;
+}
+.ng-invalid:not(form)  {
+	border-left: 5px solid #dd0031 !important;
+}
+/*end of form validation colors*/

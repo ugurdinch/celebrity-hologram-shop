@@ -1,0 +1,15 @@
+<div class="d-inline-block side-menu-container">
+	<div class="side-menu-inner">
+		
+		<div class="mb-3">
+			<h5 (click)="appService.isMenuOpen = false"><i class="fas fa-times"></i> Close</h5>
+		</div>
+
+		<hr>
+
+		<div class="mb-3">
+			<h5 [routerLink]="['login']" (click)="logout()"><i class="fas fa-sign-out-alt"></i> Logout</h5>
+		</div>
+
+	</div>
+</div>

@@ -1,0 +1,24 @@
+.app-body {
+	min-height: 100vh; 
+	width: 100vw; 
+	background: white; 
+	position: relative; 
+	overflow-x: hidden;
+}
+
+.main {
+	max-width: 900px;
+	min-width: 400px;
+	margin: auto;
+}
+
+.side-menu {
+	position: fixed; 
+	left: -200px;
+}
+
+.sliding-body {
+	width: 100%; 
+	display: inline-block;
+	position: absolute;
+}

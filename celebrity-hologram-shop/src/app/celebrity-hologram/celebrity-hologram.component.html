@@ -1,0 +1,48 @@
+<app-create-celebrity-hologram #createCelebrityHologram (updateView)="updateView($event)"></app-create-celebrity-hologram>
+<app-delete-celebrity-hologram #deleteCelebrityHologram (updateView)="updateView($event)"></app-delete-celebrity-hologram>
+
+<app-success-message [successMessage]="successMessage"></app-success-message>
+
+<div class="table-container table-responsive mb-1">
+	<table class="table celebrity-hologram-table mb-0">
+		<tbody>
+
+			<!-- create celebrity hologram -->
+			<tr class="celebrity-hologram-row text-center">
+				<td colspan="4">
+					<button class="btn btn-link btn-lg w-100" (click)="createCelebrityHologram.toggle()"><i class="fas fa-plus"></i> Add Celebrity Hologram</button>
+				</td>
+			</tr>
+
+			<!-- empty list -->
+			<tr *ngIf="celebrityHolograms?.count == 0" class="celebrity-hologram-row text-center">
+				<td colspan="4">
+					<span class="fs-18">The inventory is empty.</span>
+				</td>
+			</tr>
+
+			<!-- celebrity hologram list -->
+			<tr *ngFor="let celebrityHologram of celebrityHolograms?.celebrityHolograms" class="celebrity-hologram-row">
+				<td class="text-center">
+					<img *ngIf="celebrityHologram.image" [src]="sanitize(celebrityHologram.image)" class="celebrity-hologram-image">
+					<div *ngIf="! celebrityHologram.image" class="text-muted text-center"> No image</div>
+				</td>
+				<td class="p-3">
+					<span class="name mb-0" style="font-size: 20px; font-weight: 500; height: 24px">{{celebrityHologram.name}}</span><br>
+					<span class="text-muted">{{celebrityHologram.description}}</span>
+				</td>
+				<td >
+					<span class="text-muted">{{celebrityHologram.price | currency}}</span><br>
+					<span *ngIf="celebrityHologram.quantity" class="text-muted">{{celebrityHologram.quantity}} item<span *ngIf="celebrityHolograms?.count == 0 || celebrityHolograms?.count > 1">s</span></span>
+				</td>
+				<td class="td-delete text-center" (click)="deleteCelebrityHologram.toggle(celebrityHologram)" title="Delete">
+					<!-- passing the celebrityHologram to the child component through the click event above -->
+					<!-- <button class="btn btn-outline-primary action-btn" (click)="deleteCelebrityHologram.toggle(celebrityHologram)"><i class="fas fa-trash"></i></button>  -->
+					<button class="btn btn-link"><i class="fas fa-trash"></i></button>
+				</td>
+			</tr>
+
+		</tbody>
+	</table>
+</div>
+<p class="text-muted mb-0 fs-18">Total: {{celebrityHolograms?.count}} item<span *ngIf="celebrityHolograms?.count == 0 || celebrityHolograms?.count > 1">s</span></p>

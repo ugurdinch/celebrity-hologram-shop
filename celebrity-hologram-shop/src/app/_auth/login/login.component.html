@@ -1,0 +1,28 @@
+<div class="login-page">
+
+	<form class="form-horizontal" (ngSubmit)="login(loginForm.value)" #loginForm="ngForm">	
+
+		<h1 class="display-4" style="text-align: center">Sign in</h1>
+		<div style="max-width: 280px; margin-right: auto !important; margin-left: auto !important;">
+			<app-error-message [errorMessage]="errorMessageForLogin"></app-error-message>
+		
+			<div class="inputs">
+				<input class="form-control mb-2" [disabled]="isChangePasswordRequired" placeholder="Email" name="email" ngModel="" required autofocus />
+				<input type="password" class="form-control mb-2" [disabled]="isChangePasswordRequired" placeholder="Password" name="password" ngModel="" autocomplete="nope" required/>
+			</div>
+
+			<div class="buttons" style="text-align: center">
+				<button *ngIf="! isProcessingToLogin" class="btn btn-primary btn-block" [disabled]="! loginForm.valid" type="submit" autofocus >Sign in</button>
+				<button *ngIf="isProcessingToLogin" class="btn btn-primary btn-block"><i class="fa fa-spinner fa-spin"></i> Processing</button>
+			</div>
+
+		</div>	
+		
+	</form>
+
+	<footer class="footer" style="text-align: center; font-size: 16px">
+		<div class="container">
+			<span class="text-muted">{{year}} - Celebrity Hologram Shop</span>
+		</div>
+	</footer>
+</div>

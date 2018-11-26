@@ -1,0 +1,69 @@
+<ng-template #content>
+	<div class="modal-header">
+		<h4 class="modal-title font-weight-light">Create Celebrity Hologram</h4>
+		
+		<button type="button" class="close" aria-label="Close" (click)="modalReference.dismiss()">
+			<span aria-hidden="true">&times;</span>
+		</button>
+
+	</div>
+
+	<div class="modal-body">
+		<app-error-message [errorMessage]="errorMessageForCreateCelebrityHologram"></app-error-message>
+			
+		<form (ngSubmit)="createCelebrityHologram(createCelebrityHologramForm)" #createCelebrityHologramForm="ngForm" autocomplete="off">
+			
+			<label>Name</label>
+			<input class="form-control input-sm" ngModel name="name" required autofocus/>
+		
+			<label>Description</label>
+			<input class="form-control" ngModel name="description"/>
+
+			<label>Price</label>
+			<div class="input-group input-xs">
+				<div class="input-group-prepend">
+					<span class="input-group-text">$</span>
+				</div>
+				<input type="number" class="form-control" ngModel name="price"/>
+			</div>
+
+			<label>Quantity</label>
+			<div class="input-group input-xs">
+				<input type="number" class="form-control" ngModel name="quantity"/>
+				<div class="input-group-append">
+					<span class="input-group-text">items</span>
+				</div>
+			</div>
+		
+			<label>Image</label>
+			
+			<div class="d-flex mb-1"> <!-- display flex -->
+				<div #fileSourceButtonGroup="ngModel" class="btn-group btn-group-toggle mr-4 flex-grow-0" ngbRadioGroup name="fileSource" ngModel="url">
+					<label ngbButtonLabel class="btn-outline-primary">
+						<input ngbButton type="radio" value="url"> URL
+					</label>
+					<label ngbButtonLabel class="btn-outline-primary">
+						<input ngbButton type="radio" value="fileUpload"> File upload
+					</label>
+				</div>
+
+				<div class="flex-grow-1">
+					<input *ngIf="fileSourceButtonGroup.value == 'fileUpload'" type="file" placeholder="Upload file" accept="image/*" name="image" ngModel (change)="parseFile($event.target.files)">
+					<input *ngIf="fileSourceButtonGroup.value == 'url'" class="form-control" placeholder="E.g https://i.stack.imgur.com/xWYHG.png"  name="image" ngModel autofocus >
+				</div>
+			</div>
+
+			<label>Options</label>
+			<div>
+				<label><input type="checkbox" name="isKeepModalOpen" [ngModel]="false"> Keep the window open</label>
+			</div>
+
+			<div class="d-flex justify-content-end">
+				<button *ngIf="! isProcessingToCreateCelebrityHologram" class="btn btn-primary" [disabled]="! createCelebrityHologramForm.valid" type="submit"> Create</button>
+				<button *ngIf="isProcessingToCreateCelebrityHologram" class="btn btn-primary" type="button" disabled><i class="fa fa-spinner fa-spin"></i> Processing</button>
+			</div>
+			
+		</form>
+	</div>
+
+</ng-template>

@@ -1,0 +1,48 @@
+.celebrity-hologram-image {
+	max-height: 120px;
+	max-width: 200px;
+}
+
+.action-btn {
+	opacity: 0.4;	
+}
+
+.celebrity-hologram-table {
+	border-left: 1px solid #dee2e6; 
+	border-right: 1px solid #dee2e6; 
+	border-bottom: 1px solid #dee2e6;
+
+	td {
+		vertical-align : middle;	
+	}
+}
+
+.celebrity-hologram-row {
+	height: 140px
+}
+
+.table-container {
+	min-height: 300px;
+	max-height: calc(100vh - 210px);
+}
+
+.td-sm {
+	padding-right: 2px;
+	padding-left: 2px;
+	width: 1px !important;
+	white-space: nowrap !important;
+}
+
+.td-delete {
+	background: whitesmoke;
+	color: gray;
+	border-left: 1px solid lightgray;
+	opacity: 0.2;
+
+	&:hover {
+		opacity: 1;
+	}
+}
+.fs-18 {
+	font-size: 18px;
+}
